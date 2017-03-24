@@ -16,7 +16,7 @@ parser.add_argument('--p', type=float, default=0, help='''Optional percent ident
 	cut-off for BLAST results. Default is no filter.''')
 parser.add_argument('--g', action='store_true', help='Only consider Trinity genes')
 parser.add_argument('--clean', action='store_true', help='Only print query and hit IDs')
-parser.add_argument('--pfam', action='store_true', help='Shorten hit ID to just pfam ID')
+parser.add_argument('--swissprot', action='store_true', help='Shorten hit ID to just swissprot ID')
 args = parser.parse_args()
 
 
@@ -39,7 +39,7 @@ def main():
 		if float(field[10]) > args.e or float(field[2]) < args.p:
 			continue
 
-		if args.pfam is True:
+		if args.swissprot is True:
 			field[1] = field[1].split('|')[2]
 
 		if sequence_current == sequence:
